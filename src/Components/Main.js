@@ -1,21 +1,18 @@
 import React, {Component} from 'react'
-import Title from './Title'
 import PhotoWall from './PhotoWall'
 import AddPhoto from './AddPhoto'
 import {Route, Link} from 'react-router-dom'
-import {removePost} from '../redux/actions'
 import Single from './Single'
 
 class Main extends Component {
-    constructor() {
-        super()
-        // the below property is use for state management for each posts
-        
-    }
+    state = {laoding: true}
 
-    // componentDidMount() {
-    //     this.props.removePost(1)
-    // }
+    componentDidMount() {
+        this.props.startLoadingPost().then(() => {
+            this.setState({loading: false})
+        })
+        this.props.startLoadingComments()
+    }
 
     render() {
         return (
@@ -32,7 +29,7 @@ class Main extends Component {
                         <AddPhoto {...this.props} onHistory={history}/> 
                     )}/>
                     <Route path="/single/:id" render={(params) => (
-                        <Single {...this.props} {...params}/>
+                        <Single loading={this.state.loading} {...this.props} {...params}/>
                     )}/>
                 </div>
         )
