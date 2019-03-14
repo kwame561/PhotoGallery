@@ -68,7 +68,7 @@ button {
     flex-basis: 48%;
     background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
     border: 0;
-    border-radius: 3;
+    border-radius: 4;
     color: white;
     line-height: 2;
     cursor: pointer;
@@ -83,6 +83,7 @@ button:hover {
 
 .button {
     border: 1px solid white;
+    border-radius: 4;
     background: none;
     flex-basis: 48%;
     display: inline-block;
